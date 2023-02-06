@@ -10,24 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @State private var messageString = ""
     @State private var imageName = ""
-    @State private var imageNumber = 0
-    @State private var messageNumber = 0
-    
+    @State private var lastMessageNumber = -1
+    @State private var lastImageNumber = -1
     
     var body: some View {
         
         VStack {
             
             
-            Image(imageName)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(30)
-                .shadow(radius: 30)
-                .padding()
-            
-            Spacer()
-    
             Text(messageString)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
@@ -40,30 +30,39 @@ struct ContentView: View {
                 .padding()
             //test comment
             
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(30)
+                .shadow(radius: 30)
+                .padding()
+            
+        
             Spacer()
             
             Button ("Show Message"){
                 
                 let messages = ["You are awesome!", "You are great!", "You are the man!", "You are Fantastic!", "You make me smile!"]
                 
-                messageString = messages[Int.random(in: 0...messages.count-1)]
+                var messageNumber: Int
+                repeat {
+                    messageNumber = Int.random(in: 0...messages.count-1)
+                } while messageNumber == lastImageNumber
+                messageString = messages[messageNumber]
+                lastMessageNumber = messageNumber
                 
-                messageNumber+=1
+                var imageNumber: Int
+                repeat{
+                    imageNumber = Int.random(in: 0...messages.count-1)
+                } while imageNumber == lastImageNumber
                 
-                if messageNumber==messages.count{
-                    messageNumber=0
-                }
-                
-                
-                imageName="image\(Int.random(in: 0...9))"
+                imageName="image\(imageNumber)"
+                lastImageNumber = imageNumber
                 
             }
             .buttonStyle(.borderedProminent)
         }
-        
-        
     }
-    
 }
 
 
