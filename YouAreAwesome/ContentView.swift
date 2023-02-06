@@ -26,11 +26,8 @@ struct ContentView: View {
                 .shadow(radius: 30)
                 .padding()
             
-            
             Spacer()
-            
-            
-            
+    
             Text(messageString)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
@@ -45,12 +42,11 @@ struct ContentView: View {
             
             Spacer()
             
-            
             Button ("Show Message"){
                 
                 let messages = ["You are awesome!", "You are great!", "You are the man!", "You are Fantastic!", "You make me smile!"]
                 
-                messageString = messages[messageNumber]
+                messageString = messages[Int.random(in: 0...messages.count-1)]
                 
                 messageNumber+=1
                 
@@ -59,12 +55,8 @@ struct ContentView: View {
                 }
                 
                 
-                imageName="image\(imageNumber)"
+                imageName="image\(Int.random(in: 0...9))"
                 
-                imageNumber = imageNumber +  1
-                if imageNumber>9{
-                    imageNumber = 0
-                }
             }
             .buttonStyle(.borderedProminent)
         }
