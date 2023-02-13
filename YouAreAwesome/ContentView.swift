@@ -32,6 +32,8 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
             //                .border(.orange, width: 1)
                 .padding()
+                .animation(.easeInOut(duration: 0.15), value: messageString)
+            
             //test comment
             
             Image(imageName)
@@ -40,6 +42,7 @@ struct ContentView: View {
                 .cornerRadius(30)
                 .shadow(radius: 30)
                 .padding()
+                .animation(.default, value: messageString)
             
             
             Spacer()
@@ -83,6 +86,7 @@ struct ContentView: View {
                 .buttonStyle(.borderedProminent)
             }
             .padding()
+            .tint(.accentColor)
         }
     }
     
