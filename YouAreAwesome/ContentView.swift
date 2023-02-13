@@ -74,7 +74,9 @@ struct ContentView: View {
                     
                     
                     lastSoundNumber = nonRepeatingRandom(lastNumber: lastSoundNumber, upperBound: 5)
-                    playSound(soundName: "sound\(lastSoundNumber)")
+                    if soundIsOn{
+                        playSound(soundName: "sound\(lastSoundNumber)")
+                    }
                     
                     
                 }
